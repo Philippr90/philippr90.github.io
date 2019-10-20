@@ -110,4 +110,11 @@ public class PlayerScript : MonoBehaviour
             if (playerHealth != null) playerHealth.Damage(1);
         }
     }
+
+    private void OnDestroy()
+    {
+        // Game Over.
+        var gameOver = FindObjectOfType<GameOverScript>();
+        gameOver.ShowButtons();
+    }
 }
