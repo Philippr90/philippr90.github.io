@@ -16,8 +16,6 @@ public class PlayerScript : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
 
-    public Sprite diffSpaceship;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -111,12 +109,6 @@ public class PlayerScript : MonoBehaviour
             HealthScript playerHealth = this.GetComponent<HealthScript>();
             if (playerHealth != null) playerHealth.Damage(1);
         }
-    }
-
-    public void setDifferentSprite()
-    {
-        SpriteRenderer playerSprite = gameObject.GetComponent<SpriteRenderer>();
-        playerSprite.sprite = diffSpaceship;
     }
 
     private void OnDestroy()

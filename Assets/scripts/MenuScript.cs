@@ -1,29 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour
 {
-    public void ChangeShip()
-    {
-        PlayerScript pScript = FindObjectOfType<PlayerScript>();
-
-        SpriteRenderer playerSprite = pScript.gameObject.GetComponent<SpriteRenderer>();
-        playerSprite.sprite = Resources.Load("player_plane", typeof(Sprite)) as Sprite;
-    }
-
+    public GameObject dropdownLabel;
 
     public void StartGame()
-    {
-        PlayerScript[] playerScripts = FindObjectsOfType<PlayerScript>();
-
-        foreach(PlayerScript ps in playerScripts)
-        {
-            ps.setDifferentSprite();
-        }
+    {        
+        Text dropdownText = dropdownLabel.GetComponent<Text>();
+        string dropdownValue = dropdownText.text;
 
         // "Stage1" is the name of the first scene we created.
-        Application.LoadLevel("Stage1");
+        if (dropdownValue == "Plane")
+        {
+            Application.LoadLevel("Stage1");
+        }
+        else
+        {
+            Application.LoadLevel("Stage2");
+        }
     }
     
     // Start is called before the first frame update
