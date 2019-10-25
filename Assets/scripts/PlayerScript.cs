@@ -16,10 +16,12 @@ public class PlayerScript : MonoBehaviour
     private Vector2 movement;
     private Rigidbody2D rigidbodyComponent;
 
+    public Sprite diffSpaceship;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -111,10 +113,16 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    public void setDifferentSprite()
+    {
+        SpriteRenderer playerSprite = gameObject.GetComponent<SpriteRenderer>();
+        playerSprite.sprite = diffSpaceship;
+    }
+
     private void OnDestroy()
     {
         // Game Over.
         var gameOver = FindObjectOfType<GameOverScript>();
-        gameOver.ShowButtons();
+        gameOver.ShowButtons(false);
     }
 }
